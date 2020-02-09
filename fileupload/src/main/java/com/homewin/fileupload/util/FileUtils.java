@@ -14,11 +14,13 @@ public class FileUtils {
         List<String> fileList =  new ArrayList<>();
         List<String> foldList = new ArrayList<>();
         File file = new File(path);
-        for (File temp:file.listFiles()){
-            if (temp.isFile()){
-                fileList.add(temp.getName());
-            }else {
-                foldList.add(temp.getName());
+        if (file.listFiles() != null) {
+            for (File temp : file.listFiles()) {
+                if (temp.isFile()) {
+                    fileList.add(temp.getName());
+                } else {
+                    foldList.add(temp.getName());
+                }
             }
         }
         FileObject fileObject = new FileObject();
