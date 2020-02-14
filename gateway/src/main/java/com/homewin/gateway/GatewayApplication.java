@@ -1,16 +1,19 @@
-package com.homewin.registry;
+package com.homewin.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
-@EnableDiscoveryClient
-@EnableEurekaServer
+
+/**
+ * @author homewin
+ */
 @SpringBootApplication
-public class RegistryApplication {
+@EnableDiscoveryClient
+public class GatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RegistryApplication.class, args);
+        SpringApplication.run(GatewayApplication.class, args);
     }
 
 }

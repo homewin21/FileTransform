@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.http.HttpRequest;
 
 /**
  * @author homewin
@@ -28,7 +27,8 @@ public class FileController {
      * @return POJO
      */
     @RequestMapping(value = "/getPath",method = RequestMethod.GET)
-    public FileObject getPath(String path){
+    public FileObject getPath(String path) throws InterruptedException {
+        Thread.sleep(5000);
         return fileService.getPath(path);
     }
 
