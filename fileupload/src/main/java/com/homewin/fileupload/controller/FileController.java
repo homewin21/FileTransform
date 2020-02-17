@@ -5,6 +5,8 @@ import com.homewin.fileupload.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author homewin
  */
+@RefreshScope
 @RestController
 @CrossOrigin
 @RequestMapping("/file")
@@ -20,15 +23,19 @@ public class FileController {
     Logger log = LoggerFactory.getLogger(getClass());
     @Autowired
     private FileService fileService;
-
+    @Value("${com.name}")
+    public String name;
+    @RequestMapping("/test")
+    public String testName(){
+        return name;
+    }
     /**
      * 查询对应文件夹下的所有文件和文件夹
      * @param path 路径名
      * @return POJO
      */
     @RequestMapping(value = "/getPath",method = RequestMethod.GET)
-    public FileObject getPath(String path) throws InterruptedException {
-        Thread.sleep(5000);
+    public FileObject getPath(String path){
         return fileService.getPath(path);
     }
 

@@ -7,16 +7,3 @@ spring:
       fail-fast: true
       password: ${CONFIG_SERVICE_PASSWORD:password}
       username: user
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes:
-        - id: file_route
-          uri: lb://fileupload
-#          uri: http://localhost:8081
-          predicates:
-            - Path=/fileupload/**
-          filters:
-            - StripPrefix=1
