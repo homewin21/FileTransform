@@ -23,9 +23,9 @@ public interface FileService {
     Boolean saveFile(MultipartFile file,String path);
 
     /**
-     *
-     * @param path
-     * @return
+     * 在对应路径下新建文件夹
+     * @param path 文件路径
+     * @return boolean 是否新建成功
      */
     Boolean mkdir (String path);
 }

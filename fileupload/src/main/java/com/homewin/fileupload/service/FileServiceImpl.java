@@ -39,18 +39,20 @@ public class FileServiceImpl implements  FileService {
     public Boolean saveFile(MultipartFile file, String path) {
         String fileName = file.getOriginalFilename();
         log.info("FileService:saveFile==========> filePath:"+path+fileName);
+        assert fileName != null;
         File temp = new File(path,fileName);
         try {
             file.transferTo(temp);
         }catch (Exception e){
             log.error(e.toString(),e);
         }
-        return null;
+        return true;
     }
 
     /**
-     * @param path
-     * @return
+     * 在对应路径下新建文件夹
+     * @param path 文件路径
+     * @return boolean 是否新建成功
      */
     @Override
     public Boolean mkdir(String path) {

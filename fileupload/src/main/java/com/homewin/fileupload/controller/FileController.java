@@ -4,8 +4,6 @@ import com.homewin.fileupload.domain.FileObject;
 import com.homewin.fileupload.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,25 +15,23 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RefreshScope
 @RestController
-@CrossOrigin
 @RequestMapping("/file")
 public class FileController {
-    Logger log = LoggerFactory.getLogger(getClass());
-    @Autowired
+    private Logger log = LoggerFactory.getLogger(getClass());
     private FileService fileService;
-    @Value("${com.name}")
-    public String name;
-    @RequestMapping("/test")
-    public String testName(){
-        return name;
+
+    public FileController(FileService fileService) {
+        this.fileService = fileService;
     }
+
     /**
      * 查询对应文件夹下的所有文件和文件夹
      * @param path 路径名
      * @return POJO
      */
     @RequestMapping(value = "/getPath",method = RequestMethod.GET)
-    public FileObject getPath(String path){
+    private FileObject getPath(String path) {
+        log.info("getPath");
         return fileService.getPath(path);
     }
 
@@ -46,7 +42,7 @@ public class FileController {
      * @return result
      */
     @RequestMapping(value = "/uploadFile",method = RequestMethod.POST)
-    public String getFile(MultipartFile file,HttpServletRequest request){
+    private String getFile(MultipartFile file, HttpServletRequest request) {
         if (file.isEmpty()){
             return "empty";
         }
@@ -55,12 +51,12 @@ public class FileController {
     }
 
     /**
-     *
-     * @param path
-     * @return
+     * 在对应路径下新建文件夹
+     * @param path 文件路径
+     * @return boolean 是否新建成功
      */
     @RequestMapping(value = "/mkdir",method = RequestMethod.GET)
-    public Boolean mkdir(String path){
+    private Boolean mkdir(String path) {
         return fileService.mkdir(path);
     }
 }
