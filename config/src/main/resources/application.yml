@@ -3,7 +3,6 @@
 #    config:
 #      server:
 #        native:
-#           // 存放在本地目录下，每次更变内容需要重启config项目
 #          search-locations: classpath:/shared
 #  profiles:
 #    active: native
@@ -16,11 +15,6 @@ spring:
           uri: https://github.com/homewin21/gitRository.git
           search-paths:
             - gitRository
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
 server:
   port: 8888
 management:
