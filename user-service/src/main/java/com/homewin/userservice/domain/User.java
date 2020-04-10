@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author homewin
  */
@@ -11,7 +13,7 @@ import lombok.ToString;
 public class User {
     @Getter
     @Setter
-    private String userId;
+    private String _id;
     @Getter
     @Setter
     private String username;
