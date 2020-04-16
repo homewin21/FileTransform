@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.List;
+
 @SpringBootTest
 class UserServiceApplicationTests {
     @Autowired
@@ -21,7 +23,6 @@ class UserServiceApplicationTests {
     @Test
     void contextLoads() {
         User user = new User();
-//        user.setUserId("1");
         user.setTelephone("13000000000");
         user.setUsername("homewin");
         user.setPassword("pwd");
@@ -52,6 +53,12 @@ class UserServiceApplicationTests {
             }
         }
 
+    }
+
+    @Test
+    void testmogon() {
+        Boolean b = mongoUtils.existsUser("13000000000");
+        System.out.println(b);
     }
 
 }

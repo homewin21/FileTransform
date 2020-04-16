@@ -11,15 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@RestController
 public class GatewayApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
     }
-    @RequestMapping("/fallback")
-    public String fallback(){
-        return "sry！！";
-    }
+
 
 }

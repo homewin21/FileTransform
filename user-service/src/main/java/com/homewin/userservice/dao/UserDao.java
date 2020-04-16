@@ -1,12 +1,13 @@
-package com.homewin.userservice.service;
-
+package com.homewin.userservice.dao;
 
 import com.homewin.userservice.domain.User;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author homewin
  */
-public interface UserService {
+@Repository
+public interface UserDao {
     /**
      * 手机号是否已经被注册
      *
@@ -24,11 +25,19 @@ public interface UserService {
     boolean register(User user);
 
     /**
-     * 根据电话号码查找用户信息
+     * 根据手机号查找对应用户信息
      *
      * @param telephone telephone
      * @return user
      */
     User findUser(String telephone);
 
+
+    /**
+     * 更新用户信息
+     *
+     * @param newUser new userinfo
+     * @return boolean
+     */
+    boolean updateUser(User newUser);
 }
