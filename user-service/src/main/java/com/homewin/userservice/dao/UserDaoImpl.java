@@ -57,5 +57,15 @@ public class UserDaoImpl implements UserDao {
         return mongoUtils.updateUser(newUser);
     }
 
+    /**
+     * @param key
+     * @param value
+     * @return
+     */
+    @Override
+    public boolean setValCode(String key, String value) {
+        return false;
+    }
+
 
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * Redis操作工具类
@@ -49,5 +51,8 @@ public class RedisUtils {
         return redisTemplate.opsForValue().get(key);
     }
 
+    public void setKey(String key, String value, long time) {
+        redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
+    }
 
 }

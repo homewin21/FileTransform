@@ -57,8 +57,9 @@ class UserServiceApplicationTests {
 
     @Test
     void testmogon() {
-        Boolean b = mongoUtils.existsUser("13000000000");
-        System.out.println(b);
+        utils.setKey("10.1.2.182", "123456", 60);
+
     }
+
 
 }

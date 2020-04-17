@@ -40,4 +40,11 @@ public interface UserDao {
      * @return boolean
      */
     boolean updateUser(User newUser);
+
+    /**
+     * @param key
+     * @param value
+     * @return
+     */
+    boolean setValCode(String key, String value);
 }
