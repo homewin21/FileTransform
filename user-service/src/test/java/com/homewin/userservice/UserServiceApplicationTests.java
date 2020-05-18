@@ -61,5 +61,10 @@ class UserServiceApplicationTests {
 
     }
 
+    @Test
+    void testRandom() {
+        System.out.println((int) (Math.random() * 1000000));
+    }
+
 
 }

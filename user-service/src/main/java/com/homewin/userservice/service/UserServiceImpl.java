@@ -5,7 +5,6 @@ import com.homewin.userservice.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 
 /**
  * @author homewin
@@ -46,6 +45,29 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUser(String telephone) {
         return userDao.findUser(telephone);
+    }
+
+    /**
+     * 查询验证码是否存在
+     *
+     * @param key key
+     * @return valCode if exists
+     */
+    @Override
+    public String getValCode(String key) {
+        return userDao.getValCode(key);
+    }
+
+    /**
+     * 设置6位数随机验证码
+     *
+     * @param key key 请求的ip组成
+     * @return boolean
+     */
+    @Override
+    public Boolean setValCode(String key) {
+        String value = "" + (int) Math.random() * 100000;
+        return userDao.setValCode(key, value);
     }
 
 

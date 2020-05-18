@@ -31,4 +31,19 @@ public interface UserService {
      */
     User findUser(String telephone);
 
+    /**
+     * 查询验证码是否存在
+     *
+     * @param key key
+     * @return valCode if exists
+     */
+    String getValCode(String key);
+
+    /**
+     * 设置6位数随机验证码
+     *
+     * @param key key 请求的ip组成
+     * @return boolean
+     */
+    Boolean setValCode(String key);
 }

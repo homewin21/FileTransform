@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,9 +44,22 @@ public class UserController {
         return httpResponse;
     }
 
-    @RequestMapping(value = "/gerValCode", method = RequestMethod.GET)
-    private String test(HttpServletRequest request) {
+    @ApiOperation(value = "获取该请求IP对应的验证码")
+    @RequestMapping(value = "/getValCode", method = RequestMethod.GET)
+    private String gerValCode(HttpServletRequest request) {
         log.info(IpUtils.getIpAddr(request));
-        return "1";
+        String key = IpUtils.getIpAddr(request) + "_valCode";
+        String value = userService.getValCode(key);
+        if (value == null || value.length() == 0) {
+            log.info("redis:key=" + key + "is expire or empty");
+        }
+        return value;
+    }
+
+    @ApiOperation(value = "设置请求对应的验证码")
+    @RequestMapping(value = "/setValCode", method = RequestMethod.GET)
+    private Boolean setValCode(HttpServletRequest request) {
+        String key = IpUtils.getIpAddr(request) + "_valCode";
+        return userService.setValCode(key);
     }
 }

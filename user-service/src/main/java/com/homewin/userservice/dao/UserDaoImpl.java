@@ -2,6 +2,7 @@ package com.homewin.userservice.dao;
 
 import com.homewin.userservice.domain.User;
 import com.homewin.userservice.util.MongoUtils;
+import com.homewin.userservice.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Repository;
 public class UserDaoImpl implements UserDao {
     @Autowired
     private MongoUtils mongoUtils;
-
+    @Autowired
+    private RedisUtils redisUtils;
     /**
      * 手机号是否已经被注册
      *
@@ -65,6 +67,17 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean setValCode(String key, String value) {
         return false;
+    }
+
+    /**
+     * 获取valCode
+     *
+     * @param key key
+     * @return value or null
+     */
+    @Override
+    public String getValCode(String key) {
+        return redisUtils.getKey(key);
     }
 
 

@@ -6,3 +6,8 @@ spring:
       uri: http://localhost:8888
       fail-fast: true
       profile: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

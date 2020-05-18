@@ -42,9 +42,18 @@ public interface UserDao {
     boolean updateUser(User newUser);
 
     /**
-     * @param key
-     * @param value
-     * @return
+     * 添加valCode
+     * @param key key
+     * @param value value
+     * @return boolean
      */
     boolean setValCode(String key, String value);
+
+    /**
+     * 获取valCode
+     *
+     * @param key key
+     * @return value or null
+     */
+    String getValCode(String key);
 }
