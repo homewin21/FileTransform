@@ -1,4 +1,8 @@
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:5000
   data:
     mongodb:
       host: localhost
@@ -10,3 +14,11 @@ spring:
     database: 0
 server:
   port: 8001
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
