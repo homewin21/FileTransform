@@ -1,8 +1,11 @@
 spring:
-  application:
-    name: file-service
   cloud:
     config:
       uri: http://localhost:8888
       fail-fast: true
       profile: dev
+  application:
+    name: auth-service
+
+server:
+  port: 6000

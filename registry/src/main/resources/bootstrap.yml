@@ -5,6 +5,4 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
-      password: ${CONFIG_SERVICE_PASSWORD:password}
-      username: user
       profile: dev
