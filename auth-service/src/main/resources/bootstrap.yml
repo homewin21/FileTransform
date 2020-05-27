@@ -6,6 +6,3 @@ spring:
       profile: dev
   application:
     name: auth-service
-
-server:
-  port: 6000
