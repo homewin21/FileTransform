@@ -6,6 +6,11 @@ hystrix:
           thread:
             timeoutInMilliseconds: 2000
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:6000/getjwt
   application:
     name: gateway
   cloud:
@@ -49,15 +54,15 @@ eureka:
   client:
     service-url:
       defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
-security:
-  oauth2:
-    resource:
-      user-info-uri: http://localhost:6000/users/current
-    client:
-      id: client_2
-      client-secret: 123456
-      access-token-uri: http://localhost:6000/oauth/token
-      grant-type: client_credentials,password
-      scope: server
+#security:
+#  oauth2:
+#    resource:
+#      user-info-uri: http://localhost:6000/users/current
+#    client:
+#      id: client_2
+#      client-secret: 123456
+#      access-token-uri: http://localhost:6000/oauth/token
+#      grant-type: client_credentials,password
+#      scope: server
 
 
