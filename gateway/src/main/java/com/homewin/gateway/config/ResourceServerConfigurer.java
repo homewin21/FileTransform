@@ -1,13 +1,8 @@
 package com.homewin.gateway.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 /**
@@ -23,7 +18,7 @@ public class ResourceServerConfigurer {
         http.authorizeExchange()
                 .pathMatchers("/file-service/**").permitAll()
                 .anyExchange().authenticated();
-
+        http.oauth2ResourceServer().jwt();
         return http.build();
     }
 }
